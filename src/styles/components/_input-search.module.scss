@@ -1,0 +1,36 @@
+@use "../abstracts/index" as *;
+
+.input {
+  border: 1px solid $light-grey;
+  border-radius: 20px;
+  position: relative;
+  background-color: $white;
+  width: 250px;
+
+  .search-field {
+    border: none;
+    flex-grow: 1;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 140%;
+    padding: 9px 10px 9px 15px;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    width: 85%;
+    &:focus-visible {
+      outline: none;
+    }
+    &::placeholder,
+    &::-ms-input-placeholder,
+    &::-webkit-input-placeholder {
+      color: grey;
+    }
+  }
+  .search-icon-wrapper {
+    position: absolute;
+    right: 10px;
+    top: 8px;
+    cursor: pointer;
+  }
+}

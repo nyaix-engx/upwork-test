@@ -1,0 +1,117 @@
+@use "../abstracts/index" as *;
+
+.pointer {
+  cursor: not-allowed;
+}
+
+.primary-btn {
+  color: $white;
+  background-color: $colorBackground;
+
+  svg {
+    path {
+      fill: $white;
+    }
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+  &:disabled,
+  &[disabled] {
+    background-color: $gallery;
+    color: $silver;
+  }
+  .btn-loader {
+    border: 0.2rem solid rgba($white, 0.8);
+  }
+}
+
+.secondary-btn {
+  color: $green;
+  border: 2px solid $green;
+  svg {
+    path {
+      fill: $green;
+    }
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:active {
+    opacity: 0.8;
+  }
+  &:disabled,
+  &[disabled] {
+    color: $silver;
+    border: 2px solid $gallery;
+
+    svg {
+      path {
+        fill: $silver;
+      }
+    }
+  }
+  .btn-loader {
+    border: 0.2rem solid $green;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.8rem;
+  line-height: 2.3rem;
+  font-family: $primary-font;
+  font-weight: bold;
+
+  height: 40px;
+  padding: 0 4rem;
+
+  transition: all 0.3s;
+  border-radius: 20px;
+
+  /** Btn type */
+  &-2 {
+    span {
+      display: flex;
+      align-items: center;
+    }
+    svg {
+      margin-right: -0.7rem;
+    }
+  }
+  &-4 {
+    color: $green;
+    background-color: transparent;
+    svg {
+      path {
+        fill: $green;
+      }
+    }
+  }
+}
+
+// Button Loader
+.btn-loader {
+  width: 16px;
+  height: 16px;
+
+  border-radius: 50%;
+  border-top: 0.2rem solid transparent !important;
+
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

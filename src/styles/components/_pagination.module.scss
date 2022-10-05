@@ -1,0 +1,57 @@
+@use "../abstracts/index" as *;
+
+.paginationWrapper {
+  display: flex;
+  justify-content: center;
+
+  @include mobile {
+    flex-wrap: wrap;
+
+    .navigationButtons {
+      order: 2;
+    }
+
+    .pagesButtonsWrapper {
+      order: 1;
+      width: 100%;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+  }
+
+  button {
+    margin: 0 0.4rem;
+    padding-top: 0.3rem;
+    padding-bottom: 0.3rem;
+    font-size: 1.7rem;
+    line-height: 2rem;
+  }
+
+  .navigationButtons {
+    padding-left: 1.5rem;
+    padding-right: 1.8rem;
+  }
+
+  .pagesButtonsWrapper {
+    display: flex;
+    .pagesButtons {
+      padding: 1.5rem;
+
+      &.pagesButtonsActive {
+        // border: 1px solid $scarlet-gum;
+        background: $colorBackground;
+        color: $white;
+        border-radius: 50%;
+      }
+    }
+  }
+
+  .dots {
+    width: 2.5rem;
+    height: 4rem;
+    padding-bottom: 9px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

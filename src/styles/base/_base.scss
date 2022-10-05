@@ -1,0 +1,28 @@
+// -----------------------------------------------------------------------------
+// This file contains very basic styles.
+// -----------------------------------------------------------------------------
+
+@use "../abstracts/variables" as *;
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+ul,
+ol {
+  list-style-type: none;
+}
+
+body {
+  font-family: $primary-font;
+  font-size: 18px; // Body font size 18px
+  line-height: 26px;
+  margin: 0;
+  padding: 0;
+}

@@ -1,0 +1,16 @@
+@use "../abstracts/index" as *;
+
+.site-wrapper {
+  max-width: 1300px;
+  margin: 0 auto;
+  width: calc(100% - 100px);
+  @include tablet {
+    max-width: calc(100% - 100px);
+    width: 100%;
+    // background-color: aqua;
+  }
+  @include mobile {
+    max-width: calc(100% - 20px);
+    width: 100%;
+  }
+}
