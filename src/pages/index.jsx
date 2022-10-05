@@ -16,6 +16,7 @@ const Home = () => {
   const [isError, setIsError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [searchValue, setSearchValue] = useState("");
+  const [pageNo, setPageNo] = useState(1);
 
   useEffect(() => {
     getData();
@@ -24,10 +25,9 @@ const Home = () => {
   const getData = async () => {
     try {
       const res = await request({
-        url: "photos",
+        url: "photos?page=1",
         method: "GET",
       });
-      console.log("res", res);
       if (res.status) {
         setPhotos(res.data);
       } else {
@@ -78,12 +78,7 @@ const Home = () => {
           </div>
         </div>
         {isDataLoaded && (
-          <>
-            <div className={styles["content-wrapper"]}>{getContent()}</div>
-            <div className={styles["pagination-wrapper"]}>
-              <Pagination />
-            </div>
-          </>
+          <div className={styles["content-wrapper"]}>{getContent()}</div>
         )}
       </div>
     </LoaderWrapper>

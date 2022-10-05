@@ -3,10 +3,18 @@
 .paginationWrapper {
   display: flex;
   justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  background: $white;
+  height: 100px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 10px 0px;
 
   @include mobile {
     flex-wrap: wrap;
-
+    bottom: 10px;
     .navigationButtons {
       order: 2;
     }
@@ -15,27 +23,28 @@
       order: 1;
       width: 100%;
       justify-content: center;
-      margin-bottom: 1rem;
+      margin-bottom: 10px;
     }
   }
 
   button {
-    margin: 0 0.4rem;
-    padding-top: 0.3rem;
-    padding-bottom: 0.3rem;
-    font-size: 1.7rem;
-    line-height: 2rem;
+    margin: 0 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 17px;
+    line-height: 2px;
   }
 
   .navigationButtons {
-    padding-left: 1.5rem;
-    padding-right: 1.8rem;
+    padding-left: 15px;
+    padding-right: 18px;
   }
 
   .pagesButtonsWrapper {
     display: flex;
     .pagesButtons {
-      padding: 1.5rem;
+      padding: 15px;
+      cursor: pointer;
 
       &.pagesButtonsActive {
         // border: 1px solid $scarlet-gum;
@@ -47,8 +56,8 @@
   }
 
   .dots {
-    width: 2.5rem;
-    height: 4rem;
+    width: 25px;
+    height: 4px;
     padding-bottom: 9px;
     display: inline-flex;
     align-items: center;

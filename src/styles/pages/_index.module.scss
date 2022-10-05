@@ -1,22 +1,23 @@
 @use "../abstracts/index" as *;
 
 .container {
-  margin: 30px;
   .header {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30px;
+    align-items: center;
+    height: 80px;
   }
   .content-wrapper {
     display: flex;
     row-gap: 20px;
-    column-gap: 13px;
+    column-gap: 12px;
     flex-wrap: wrap;
-    @include desktop-only {
-      column-gap: 12px;
+    @include desktop {
+      column-gap: 42px;
     }
     @include tablet {
-      column-gap: 8px;
+      column-gap: 60px;
     }
   }
 }

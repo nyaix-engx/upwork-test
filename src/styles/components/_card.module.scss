@@ -3,14 +3,14 @@
 .card {
   display: flex;
   border-radius: 10px;
-  width: 300px;
+  width: 316px;
   height: fit-content;
   cursor: pointer;
   @include desktop {
     width: 280px;
   }
   @include tablet {
-    width: 300px;
+    width: 304px;
   }
   @include mobile {
     width: 100%;

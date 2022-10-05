@@ -7,14 +7,16 @@ import Icon from "@components/Icon";
 import InputSearch from "@components/InputSearch";
 import Card from "@components/Card";
 import LoaderWrapper from "@components/LoaderWrapper";
+import Pagination from "@components/Pagination";
 
 import styles from "@styles/pages/_search.module.scss";
 
 const Search = () => {
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
-  const [photos, setPhotos] = useState(null);
+  const [apiData, setApiData] = useState(null);
   const [isError, setIsError] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -28,19 +30,21 @@ const Search = () => {
     if (searchTerm) {
       getPhotos();
     }
-  }, [searchTerm]);
-
-  console.log("is data", isDataLoaded);
+  }, [searchTerm, currentPage]);
 
   const getPhotos = async () => {
+    setIsDataLoaded(false);
     try {
       const res = await request({
-        url: `search/photos?query=${searchTerm}`,
+        url: `search/photos?query=${searchTerm}&page=${currentPage}`,
         method: "GET",
       });
       if (res.status) {
-        console.log("res", res);
-        setPhotos(res.data.results);
+        setApiData({
+          photos: res?.data?.results,
+          totalResults: res?.data?.total,
+          totalPages: res?.data?.total_pages,
+        });
       } else {
         setIsError(true);
         setErrorMessage(
@@ -83,17 +87,33 @@ const Search = () => {
           errorMessage={errorMessage}
         >
           {isDataLoaded && (
-            <div className={styles["layout-content-cards-container"]}>
-              {photos &&
-                photos?.map((_data, index) => (
-                  <Card
-                    key={`index_${index}`}
-                    imageSrc={_data?.urls?.regular}
-                    cardDesc={_data?.description || "No description available"}
-                    type={2}
-                  />
-                ))}
-            </div>
+            <>
+              {apiData !== null && !!apiData.photos.length ? (
+                <>
+                  <div className={styles["layout-content-cards-container"]}>
+                    {apiData.photos?.map((_data, index) => (
+                      <Card
+                        key={`index_${index}`}
+                        imageSrc={_data?.urls?.regular}
+                        cardDesc={
+                          _data?.description || "No description available"
+                        }
+                        type={2}
+                      />
+                    ))}
+                  </div>
+                  <div className={styles["pagination-wrapper"]}>
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={apiData.totalPages}
+                      pageChangeHandler={(value) => setCurrentPage(value)}
+                    />
+                  </div>
+                </>
+              ) : (
+                <div>No search results found</div>
+              )}
+            </>
           )}
         </LoaderWrapper>
       </div>

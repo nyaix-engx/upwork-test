@@ -8,7 +8,6 @@ const LoaderWrapper = ({
   children,
   errorMessage = " An error occured",
 }) => {
-  console.log("sda", isDataLoaded);
   return (
     <>
       {isError ? (
